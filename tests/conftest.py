@@ -1,11 +1,4 @@
 import pytest
-import sys
-import os
-
-# Garantir que a raiz do projeto esteja no PYTHONPATH quando pytest é executado
-root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if root not in sys.path:
-    sys.path.insert(0, root)
 
 from main import criar_app, items
 
