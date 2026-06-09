@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "testes"
+version = "0.1.0"
+description = "Projeto de exemplo para testes"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [ { name = "Autor" } ]
+dependencies = ["Flask>=2.0"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-q -r a"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
