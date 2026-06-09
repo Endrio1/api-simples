@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.11, 3.10]
+        python-version: ['3.11', '3.10']
 
     steps:
       - name: Checkout
@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          check-latest: true
 
       - name: Cache pip
         uses: actions/cache@v4
