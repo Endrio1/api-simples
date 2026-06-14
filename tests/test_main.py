@@ -4,6 +4,7 @@ from main import app, items
 
 client = app.test_client()
 
+
 def setup_function():
     items.clear()
 
@@ -28,6 +29,22 @@ def test_mostrar_items():
     assert resp.status_code == 200
     js = resp.get_json()
     assert len(js["items"]) == 2
+
+
+def test_cria_item_missing_nome():
+    data = {"descricao": "Desc", "preco": 10.5}
+    resp = client.post("/items/", json=data)
+    assert resp.status_code == 400
+    js = resp.get_json()
+    assert js.get("detail") == "Campos obrigatórios ausentes"
+
+
+def test_cria_item_missing_preco():
+    data = {"nome": "Produto B", "descricao": "Desc"}
+    resp = client.post("/items/", json=data)
+    assert resp.status_code == 400
+    js = resp.get_json()
+    assert js.get("detail") == "Campos obrigatórios ausentes"
 
 
 def test_buscar_item_not_found():
