@@ -4,6 +4,7 @@ from main import app, items
 
 client = app.test_client()
 
+
 def setup_function():
     items.clear()
 
