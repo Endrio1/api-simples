@@ -3,7 +3,7 @@ import uuid
 
 app = Flask(__name__)
 
-# Estrutura simples de armazenamento em memória
+
 items = {}
 
 
@@ -12,7 +12,7 @@ def cria_item():
     data = request.get_json() or {}
     nome = data.get('nome')
     preco = data.get('preco')
-    # validação mínima
+    
     if nome is None or preco is None:
         return jsonify({'detail': 'Campos obrigatórios ausentes'}), 400
 
@@ -44,7 +44,7 @@ def atualiza_item(item_id: str):
     if item_id not in items:
         return jsonify({'detail': 'Item não encontrado'}), 404
     data = request.get_json() or {}
-    # Espera o objeto completo com 'id' e campos
+    
     items[item_id] = {
         'id': item_id,
         'nome': data.get('nome'),
@@ -63,7 +63,7 @@ def apagar_item(item_id: str):
 
 
 def criar_app():
-    # Limpa estado compartilhado e retorna a instância da aplicação.
+    
     items.clear()
     return app
 
